@@ -12,14 +12,16 @@ var context = canvas.getContext("2d");
 canvas.width = squaresWide * squareSize;
 canvas.height = squaresHigh * squareSize;
 
+//Create Element Controller
+var ec = new elementController();
+
 this.gameLoop = function()
 {
   //Clear Screen
   clearScreen();
 
-  //Draw grid - In grid.js
-  drawGrid(context);
-
+  //Tick and Draw
+  ec.tickWorld();
 
   window.requestAnimationFrame(gameLoop);
 }
