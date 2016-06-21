@@ -1,8 +1,8 @@
 //Game of life values -- Global!
 var squaresWide, squaresHigh, squareSize;
-squaresWide = 10;
-squaresHigh = 10;
-squareSize  = 30;
+squaresWide = 45;
+squaresHigh = 45;
+squareSize  = 10;
 
 //Get the canvas
 var canvas = document.getElementById("myCanvas");
@@ -14,6 +14,8 @@ canvas.height = squaresHigh * squareSize;
 
 //Create Element Controller
 var ec = new elementController();
+ec.setNumberOfElements(squaresHigh * squaresWide);
+ec.setupElements();
 
 this.gameLoop = function()
 {
