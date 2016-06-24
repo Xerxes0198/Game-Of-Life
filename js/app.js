@@ -2,7 +2,7 @@
 var squaresWide, squaresHigh, squareSize;
 squaresWide = 45;
 squaresHigh = 45;
-squareSize  = 10;
+squareSize  = 12;
 
 //Get the canvas
 var canvas = document.getElementById("myCanvas");
@@ -17,13 +17,19 @@ var ec = new elementController();
 ec.setNumberOfElements(squaresHigh * squaresWide);
 ec.setupElements();
 
+this.tickFunction = function()
+{
+  //Tick and Draw elements
+  ec.tickWorld();
+}
+
 this.gameLoop = function()
 {
   //Clear Screen
   clearScreen();
 
-  //Tick and Draw
-  ec.tickWorld();
+  //Call tick
+  tickFunction();
 
   window.requestAnimationFrame(gameLoop);
 }
