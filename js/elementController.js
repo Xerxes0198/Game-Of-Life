@@ -7,6 +7,14 @@ var elementController = function()
   var currentElements = new Array();
 
   //Loops through them all and applies rules
+  this.applyRules = function()
+  {
+    //TODO: Move this function to the draw elements loop.. Too many Loops
+    for(i = 0; i < currentElements.length; i++)
+    {
+      currentElements[i].checkState(currentElements);
+    }
+  }
 
   //Tick world
   this.tickWorld = function()
@@ -15,9 +23,10 @@ var elementController = function()
     drawGrid(context);
 
     //Apply rules
+    this.applyRules();
 
     //Draw elemnts
-    drawElements(currentElements);
+    drawElements(context, currentElements);
   }
 
   this.setNumberOfElements = function(inNumberOfElements)
@@ -33,6 +42,7 @@ var elementController = function()
       for(i = 0; i < this.numberOfElements; i++)
       {
         currentElements[i] = new gridElement();
+        currentElements[i].calculateNeighbours(i);
         //currentElements[i].test();
       }
     }
@@ -43,6 +53,8 @@ var elementController = function()
     }
 
     //For testing, set random ones to alive
-    currentElements[4].toggleAlive();
+    currentElements[0].toggleAlive();
+    currentElements[1].toggleAlive();
+    currentElements[2].toggleAlive();
   }
 }

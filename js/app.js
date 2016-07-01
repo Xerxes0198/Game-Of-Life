@@ -1,8 +1,11 @@
 //Game of life values -- Global!
 var squaresWide, squaresHigh, squareSize;
-squaresWide = 45;
-squaresHigh = 45;
-squareSize  = 12;
+squaresWide = 5;
+squaresHigh = 5;
+squareSize  = 25;
+
+squareColour = "#ffff00";
+
 
 //Get the canvas
 var canvas = document.getElementById("myCanvas");
@@ -34,3 +37,4 @@ this.gameLoop = function()
   window.requestAnimationFrame(gameLoop);
 }
 gameLoop();
+//if greg has a function, what is it>> he is le derpiest derp in the world.

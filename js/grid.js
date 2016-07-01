@@ -18,10 +18,9 @@ this.drawGrid = function(context)
   }
 }
 
-
 //Draw the elements of the grid
 //TODO: Combine this with previous function. No need for second function
-this.drawElements = function(inElements)
+this.drawElements = function(context, inElements)
 {
   //Start a loop for all squares AND if alive
   for(i = 0; i < inElements.length; i++)
@@ -31,11 +30,21 @@ this.drawElements = function(inElements)
     {
       //Calculate the row
       //Divide i by squares wide MODULUS to get +1 row
+      xLocation = (i % squaresWide) * squareSize;
+
+      //console.log("Calc X: " + xLocation);
+      console.log("Mod test" + i % squaresWide);
 
       //Calculate the column
+      yLocation = Math.floor(i / squaresWide) * squareSize;
+      //console.log("Calc Y: " + yLocation);
 
       //Move to position wide and line
       //Offset for centre of elemtent
+
+      //Draw element
+      context.fillStyle = squareColour;
+      context.fillRect(xLocation, yLocation, squareSize * .9 ,squareSize * .9);
     }
   }
 }
