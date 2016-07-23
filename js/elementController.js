@@ -1,7 +1,10 @@
-var elementController = function()
+var elementController = function(inCanvasWidth, inCanvasHeight)
 {
   //Element values
   this.numberOfElements = 0;
+
+  this.canvasWidth = inCanvasWidth;
+  this.canvasHeight = inCanvasHeight;
 
   //Array of elements
   var currentElements = new Array();
@@ -42,7 +45,7 @@ var elementController = function()
       for(i = 0; i < this.numberOfElements; i++)
       {
         currentElements[i] = new gridElement();
-        currentElements[i].calculateNeighbours(i);
+        currentElements[i].calculateNeighbours(i, this.canvasWidth, this.canvasHeight, this.numberOfElements);
         //currentElements[i].test();
       }
     }

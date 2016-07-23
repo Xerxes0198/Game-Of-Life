@@ -33,7 +33,7 @@ this.drawElements = function(context, inElements)
       xLocation = (i % squaresWide) * squareSize;
 
       //console.log("Calc X: " + xLocation);
-      console.log("Mod test" + i % squaresWide);
+      //console.log("Mod test" + i % squaresWide);
 
       //Calculate the column
       yLocation = Math.floor(i / squaresWide) * squareSize;

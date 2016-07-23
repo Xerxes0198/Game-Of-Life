@@ -16,7 +16,7 @@ canvas.width = squaresWide * squareSize;
 canvas.height = squaresHigh * squareSize;
 
 //Create Element Controller
-var ec = new elementController();
+var ec = new elementController(canvas.width, canvas.height);
 ec.setNumberOfElements(squaresHigh * squaresWide);
 ec.setupElements();
 
