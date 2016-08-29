@@ -19,6 +19,20 @@ var elementController = function(inCanvasWidth, inCanvasHeight)
     }
   }
 
+  //Function to transform a location to a grid element
+  //Returns element number
+  this.getGridElementFromXY = function(inX, inY)
+  {
+      console.log("Calculating grid element from cartesean coordinates");
+
+      cellX = Math.floor(inX / squareSize);
+      cellY = Math.floor(inY / squareSize);
+
+      index = cellX + cellY * squaresWide;
+
+      return index;
+  }
+
   //Tick world
   this.tickWorld = function()
   {
@@ -45,7 +59,7 @@ var elementController = function(inCanvasWidth, inCanvasHeight)
       for(i = 0; i < this.numberOfElements; i++)
       {
         currentElements[i] = new gridElement();
-        currentElements[i].calculateNeighbours(i, this.canvasWidth, this.canvasHeight, this.numberOfElements);
+        currentElements[i].calculateNeighbours(i, this.canvasWidth, this.canvasHeight, this.numberOfElements, this);
         //currentElements[i].test();
       }
     }

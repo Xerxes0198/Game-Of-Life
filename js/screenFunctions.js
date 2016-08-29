@@ -1,4 +1,10 @@
 this.clearScreen = function()
 {
-  context.fillRect(0,0,canvas.with, canvas.height);
+  //Change context colour first.
+  context.fillStyle = clearColour;
+
+  //Draw clear rectangle
+  context.fillRect(0,0,canvas.width, canvas.height);
+
+  console.log("Clear screen called");
 }
