@@ -4,6 +4,7 @@ var gridElement = function()
   //IsAlive
   var isAlive = false;
   var willDie = false;
+  var willBorn = false;
   var cursor = 0;
   var xLocation, yLocation;
 
@@ -30,7 +31,7 @@ var gridElement = function()
 
     neighbour1X = this.wrapValueX(neighbour1X);
     neighbour1Y = this.wrapValueY(neighbour1Y);
-
+    neighbours[0] = inElementController.getGridElementFromXY(neighbour1X, neighbour1Y);
     //
 
     neighbour2X = this.xLocation;
@@ -38,6 +39,7 @@ var gridElement = function()
 
     neighbour2X = this.wrapValueX(neighbour2X);
     neighbour2Y = this.wrapValueY(neighbour2Y);
+    neighbours[1] = inElementController.getGridElementFromXY(neighbour2X, neighbour2Y);
 
     //
 
@@ -46,6 +48,7 @@ var gridElement = function()
 
     neighbour3X = this.wrapValueX(neighbour3X);
     neighbour3Y = this.wrapValueY(neighbour3Y);
+    neighbours[2] = inElementController.getGridElementFromXY(neighbour3X, neighbour3Y);
 
     //
 
@@ -54,6 +57,7 @@ var gridElement = function()
 
     neighbour4X = this.wrapValueX(neighbour4X);
     neighbour4Y = this.wrapValueY(neighbour4Y);
+    neighbours[3] = inElementController.getGridElementFromXY(neighbour4X, neighbour4Y);
 
     //
     neighbour5X = this.xLocation + squareSize;
@@ -61,6 +65,7 @@ var gridElement = function()
 
     neighbour5X = this.wrapValueX(neighbour5X);
     neighbour5Y = this.wrapValueY(neighbour5Y);
+    neighbours[4] = inElementController.getGridElementFromXY(neighbour5X, neighbour5Y);
 
     //
 
@@ -69,6 +74,7 @@ var gridElement = function()
 
     neighbour6X = this.wrapValueX(neighbour6X);
     neighbour6Y = this.wrapValueY(neighbour6Y);
+    neighbours[5] = inElementController.getGridElementFromXY(neighbour6X, neighbour6Y);
 
     //
 
@@ -77,6 +83,7 @@ var gridElement = function()
 
     neighbour7X = this.wrapValueX(neighbour7X);
     neighbour7Y = this.wrapValueY(neighbour7Y);
+    neighbours[6] = inElementController.getGridElementFromXY(neighbour7X, neighbour7Y);
 
     //
 
@@ -85,6 +92,7 @@ var gridElement = function()
 
     neighbour8X = this.wrapValueX(neighbour8X);
     neighbour8Y = this.wrapValueY(neighbour8Y);
+    neighbours[7] = inElementController.getGridElementFromXY(neighbour8X, neighbour8Y);
 
     //Convert back to gridElement and store in neighbours Array
     console.log(inElementController.getGridElementFromXY(10,10));
@@ -155,8 +163,24 @@ var gridElement = function()
 
     //Check neighbours and see if they are alive
 
-    //If this is alive and count higher than 4 this will die
+    //Reference all neighbours from neighbours array in inElements...
+    if(isAlive)
+    {
+      for(i = 0; i < neighbours.length; i++)
+      {
+        if(inElements[i].isAlive)
+          neighboursAlive++;
+      }
 
+      //If this is alive and count higher than 4 this will die
+      if(neighboursAlive > 4)
+        willDie = true;
+    }
+    else
+    {
+      neighboursAlive > 3
+        willBorn = true;
+    }
   }
 
   this.test = function()
