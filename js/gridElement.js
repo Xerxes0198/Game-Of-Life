@@ -161,24 +161,32 @@ var gridElement = function()
     //Neighbours alive count
     var neighboursAlive = 0;
 
-    //Check neighbours and see if they are alive
-
     //Reference all neighbours from neighbours array in inElements...
+    for(i = 0; i < neighbours.length; i++)
+    {
+      if(inElements[i].isAlive)
+        neighboursAlive++;
+    }
+
     if(isAlive)
     {
-      for(i = 0; i < neighbours.length; i++)
-      {
-        if(inElements[i].isAlive)
-          neighboursAlive++;
-      }
+      /*
+      Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+      Any live cell with two or three live neighbours lives on to the next generation.
+      Any live cell with more than three live neighbours dies, as if by over-population.
+      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+      */
 
       //If this is alive and count higher than 4 this will die
+      if(neighboursAlive < 2)
+        willDie = true;
+
       if(neighboursAlive > 4)
         willDie = true;
     }
     else
     {
-      neighboursAlive > 3
+      neighboursAlive == 3
         willBorn = true;
     }
   }
