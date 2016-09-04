@@ -15,6 +15,9 @@ var elementController = function(inCanvasWidth, inCanvasHeight)
     //TODO: Move this function to the draw elements loop.. Too many Loops
     for(i = 0; i < currentElements.length; i++)
     {
+      //Greg, I found the bug here.. Too tired to debug it tonight..
+      //Go to sleep..
+      // Bug in sub-routine below
       currentElements[i].checkState(currentElements);
     }
   }
