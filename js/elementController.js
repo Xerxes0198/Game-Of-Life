@@ -13,6 +13,7 @@ var elementController = function(inCanvasWidth, inCanvasHeight)
   this.applyRules = function()
   {
     //TODO: Move this function to the draw elements loop.. Too many Loops
+
     for(i = 0; i < currentElements.length; i++)
     {
       //Greg, I found the bug here.. Too tired to debug it tonight..

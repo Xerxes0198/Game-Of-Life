@@ -162,37 +162,35 @@ var gridElement = function()
     var neighboursAlive = 0;
 
     //Reference all neighbours from neighbours array in inElements...
-    for(i = 0; i < neighbours.length; i++)
+    for(xi = 0; xi < neighbours.length; xi++)
     {
-      if(inElements[i].isAlive)
+      if(inElements[neighbours[xi]].isAlive)
         neighboursAlive++;
     }
+    console.log("Neighbours Alive: " + neighboursAlive);
 
-    if(isAlive)
+    if(isAlive == true)
     {
-      /*
-      Any live cell with fewer than two live neighbours dies, as if caused by under-population.
-      Any live cell with two or three live neighbours lives on to the next generation.
-      Any live cell with more than three live neighbours dies, as if by over-population.
-      Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-      */
+      //Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+      //Any live cell with two or three live neighbours lives on to the next generation.
+      //Any live cell with more than three live neighbours dies, as if by over-population.
+      //Any doead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+      //Note to Greg, seems to be counting self as a neighbour
 
       //If this is alive and count higher than 4 this will die
       if(neighboursAlive < 2)
-        willDie = true;
+        //willDie = true;
+        isAlive = false;
 
       if(neighboursAlive > 4)
-        willDie = true;
+        isAlive = false;
     }
     else
     {
-      neighboursAlive == 3
-        willBorn = true;
-    }
-  }
 
-  this.test = function()
-  {
-    console.log("SG");
+      neighboursAlive == 3
+        isAlive = true;
+    }
   }
 }
